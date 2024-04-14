@@ -116,12 +116,32 @@ public class Frame implements ActionListener {
                 area.setVisible(false);
                 perimeter.setVisible(true);
                 calculate.setVisible(true);
+
+                if(e.getSource() == calculate) {
+                    try {
+                        Shape rectangle = new Rectangle(Double.parseDouble(length.getText()), Double.parseDouble(width.getText()));
+
+                        perimeter.setText("Perimeter: " + rectangle.calculatePerimeter());
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(frame, "Not a valid length or width");
+                    }
+                }
             }
 
             if(computeBox.getSelectedItem() == "Area"){
                 perimeter.setVisible(false);
                 area.setVisible(true);
                 calculate.setVisible(true);
+
+                if(e.getSource() == calculate) {
+                    try {
+                        Shape rectangle = new Rectangle(Double.parseDouble(length.getText()), Double.parseDouble(width.getText()));
+
+                        area.setText("Area: " + rectangle.calculateArea());
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(frame, "Not a valid length or width");
+                    }
+                }
             }
         }
 
