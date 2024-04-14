@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f494d2be-55cd-4817-8e36-70f77d61280d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rectangle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +37,7 @@
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dc6c5526&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ffd9cbb4&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Rj/rj-repos-windows/java-projects/OOP/Shape_PeremeterArea&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -80,7 +82,8 @@
       <workItem from="1713007154538" duration="8116000" />
       <workItem from="1713015678098" duration="53000" />
       <workItem from="1713060170498" duration="3479000" />
-      <workItem from="1713070056081" duration="449000" />
+      <workItem from="1713070056081" duration="1162000" />
+      <workItem from="1713077934109" duration="626000" />
     </task>
     <servers />
   </component>
