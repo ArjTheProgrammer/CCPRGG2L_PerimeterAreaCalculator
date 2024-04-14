@@ -11,6 +11,7 @@ public class Frame implements ActionListener {
     JTextField length;
     JTextField width;
     JTextField radius;
+    JButton calculate;
     JTextField perimeter;
     JTextField area;
     JPanel interfacePanel;
@@ -27,7 +28,7 @@ public class Frame implements ActionListener {
         title.setFont(new Font("Arial",Font.BOLD,20));
 
         String[] choices = {"Perimeter", "Area"};
-        computeBox = new JComboBox<String>(choices);
+        computeBox = new JComboBox<>(choices);
         computeBox.addActionListener(this);
         computeBox.setEditable(false);
         computeBox.setFocusable(false);
@@ -44,12 +45,11 @@ public class Frame implements ActionListener {
         length.addActionListener(this);
         length.setFont(new Font("Arial",Font.BOLD,20));
         length.setForeground(Color.black);
-        length.setText("Length: ");
         length.setEditable(true);
         length.setVisible(false);
         length.setBounds(10,100,300,50);
 
-        width = new JTextField("Width: ");
+        width = new JTextField();
         width.addActionListener(this);
         width.setFont(new Font("Arial",Font.BOLD,20));
         width.setForeground(Color.black);
@@ -57,7 +57,7 @@ public class Frame implements ActionListener {
         width.setVisible(false);
         width.setBounds(10,160,300,50);
 
-        radius = new JTextField("Radius: ");
+        radius = new JTextField();
         radius.addActionListener(this);
         radius.setFont(new Font("Arial",Font.BOLD,20));
         radius.setForeground(Color.black);
@@ -78,6 +78,12 @@ public class Frame implements ActionListener {
         area.setVisible(false);
         area.setBounds(10,220,300,50);
 
+        calculate = new JButton("Calculate");
+        calculate.setFont(new Font("Arial",Font.BOLD,10));
+        calculate.setBounds(320,220,100,50);
+        calculate.addActionListener(this);
+        calculate.setVisible(false);
+
         interfacePanel = new JPanel();
         interfacePanel.setBackground(Color.orange);
         interfacePanel.setOpaque(true);
@@ -89,6 +95,7 @@ public class Frame implements ActionListener {
         interfacePanel.add(radius);
         interfacePanel.add(perimeter);
         interfacePanel.add(area);
+        interfacePanel.add(calculate);
         interfacePanel.add(shapeBox);
         interfacePanel.add(computeBox);
 
@@ -101,25 +108,64 @@ public class Frame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(shapeBox.getSelectedItem() == "Rectangle"){
-            radius.setVisible(false);
             length.setVisible(true);
             width.setVisible(true);
-        }
+            radius.setVisible(false);
 
-        if(computeBox.getSelectedItem() == "Perimeter"){
-            area.setVisible(false);
-            perimeter.setVisible(true);
-        }
+            if(computeBox.getSelectedItem() == "Perimeter"){
+                area.setVisible(false);
+                perimeter.setVisible(true);
+                calculate.setVisible(true);
+            }
 
-        if(computeBox.getSelectedItem() == "Area"){
-            perimeter.setVisible(false);
-            area.setVisible(true);
+            if(computeBox.getSelectedItem() == "Area"){
+                perimeter.setVisible(false);
+                area.setVisible(true);
+                calculate.setVisible(true);
+            }
         }
 
         if(shapeBox.getSelectedItem() == "Circle"){
             length.setVisible(false);
             width.setVisible(false);
             radius.setVisible(true);
+
+            if(computeBox.getSelectedItem() == "Perimeter"){
+                area.setVisible(false);
+                perimeter.setVisible(true);
+                radius.setVisible(true);
+                calculate.setVisible(true);
+
+                if(e.getSource() == calculate){
+                    try{
+                        Shape circle =  new Circle(Double.parseDouble(radius.getText()));
+
+                        perimeter.setText("Perimeter: " + circle.calculatePerimeter());
+                    }
+                    catch(NumberFormatException ex){
+                        JOptionPane.showMessageDialog(frame, "Not a valid radius");
+                    }
+                }
+
+            }
+
+            if(computeBox.getSelectedItem() == "Area"){
+                perimeter.setVisible(false);
+                area.setVisible(true);
+                radius.setVisible(true);
+                calculate.setVisible(true);
+
+                if(e.getSource() == calculate){
+                    try{
+                        Shape circle =  new Circle(Double.parseDouble(radius.getText()));
+
+                        area.setText("area: " + circle.calculateArea());
+                    }
+                    catch(NumberFormatException ex){
+                        JOptionPane.showMessageDialog(frame, "Not a valid radius");
+                    }
+                }
+            }
         }
     }
 }
