@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f494d2be-55cd-4817-8e36-70f77d61280d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +36,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "127b466e",
+    "git-widget-placeholder": "d54aa66f",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Rj/rj-repos-windows/java-projects/OOP/Shape_PeremeterArea",
     "node.js.detected.package.eslint": "true",
@@ -79,7 +80,7 @@
       <workItem from="1712985825883" duration="754000" />
       <workItem from="1713007154538" duration="8116000" />
       <workItem from="1713015678098" duration="53000" />
-      <workItem from="1713060170498" duration="1899000" />
+      <workItem from="1713060170498" duration="2994000" />
     </task>
     <servers />
   </component>
