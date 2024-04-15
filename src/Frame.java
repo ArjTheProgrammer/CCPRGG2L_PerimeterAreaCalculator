@@ -348,7 +348,7 @@ public class Frame implements ActionListener {
                         perimeter.setText("Perimeter: " + triangle.calculatePerimeter());
                     }
                     catch(NumberFormatException ex){
-                        JOptionPane.showMessageDialog(frame, "Not a valid radius");
+                        JOptionPane.showMessageDialog(frame, "Not a valid sides or base");
                         radius.setText("");
                     }
                 }
@@ -371,7 +371,7 @@ public class Frame implements ActionListener {
                         area.setText("Area: " + triangle.calculateArea());
                     }
                     catch(NumberFormatException ex){
-                        JOptionPane.showMessageDialog(frame, "Not a valid radius");
+                        JOptionPane.showMessageDialog(frame, "Not a valid base or height");
                         radius.setText("");
                     }
                 }
