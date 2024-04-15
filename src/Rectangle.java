@@ -1,7 +1,7 @@
 public class Rectangle extends Shape {
 
-    private double length;
-    private double width;
+    private final double length;
+    private final double width;
 
     Rectangle(double length, double width) {
         this.length = length;
@@ -9,10 +9,10 @@ public class Rectangle extends Shape {
     }
 
     public double calculateArea(){
-        return Math.round( length * width);
+        return(double) Math.round(( length * width)*100)/100;
     }
 
     public double calculatePerimeter(){
-        return Math.round( 2*length + 2*width);
+        return(double) Math.round((2*length + 2*width)*100.0)/100;
     }
 }
