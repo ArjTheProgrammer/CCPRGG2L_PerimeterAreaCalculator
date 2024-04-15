@@ -10,10 +10,18 @@ public class Frame implements ActionListener {
     JComboBox<String> shapeBox;
     JTextField length;
     JLabel lengthLabel;
-    JLabel widthLabel;
-    JLabel radiusLabel;
     JTextField width;
+    JLabel widthLabel;
     JTextField radius;
+    JLabel radiusLabel;
+    JTextField height;
+    JLabel heightLabel;
+    JTextField base;
+    JLabel baseLabel;
+    JTextField sideA;
+    JLabel sideALabel;
+    JLabel sideBLabel;
+    JTextField sideB;
     JButton calculate;
     JTextField perimeter;
     JTextField area;
@@ -30,20 +38,21 @@ public class Frame implements ActionListener {
         title = new JLabel("    Perimeter Area Calculator");
         title.setFont(new Font("Arial",Font.BOLD,20));
 
-        String[] choices = {"Perimeter", "Area"};
+        String[] choices = {"Area", "Perimeter"};
         computeBox = new JComboBox<>(choices);
         computeBox.addActionListener(this);
         computeBox.setEditable(false);
         computeBox.setFocusable(false);
         computeBox.setBounds(10,5,100,30);
 
-        String[] shapes = {"Circle", "Rectangle"};
+        String[] shapes = {"Circle", "Rectangle", "Triangle"};
         shapeBox = new JComboBox<>(shapes);
         shapeBox.addActionListener(this);
         shapeBox.setEditable(false);
         shapeBox.setFocusable(false);
         shapeBox.setBounds(120,5,100,30);
 
+        //for rectangle
         length = new JTextField();
         length.addActionListener(this);
         length.setFont(new Font("Arial",Font.BOLD,20));
@@ -72,6 +81,7 @@ public class Frame implements ActionListener {
         widthLabel.setVisible(false);
         widthLabel.setBounds(320,160,100,50);
 
+        //for circle
         radius = new JTextField();
         radius.addActionListener(this);
         radius.setFont(new Font("Arial",Font.BOLD,20));
@@ -85,6 +95,64 @@ public class Frame implements ActionListener {
         radiusLabel.setForeground(Color.black);
         radiusLabel.setVisible(false);
         radiusLabel.setBounds(320,160,100,50);
+
+        //for triangle
+        height = new JTextField();
+        height.addActionListener(this);
+        height.setFont(new Font("Arial",Font.BOLD,20));
+        height.setForeground(Color.black);
+        height.setEditable(true);
+        height.setVisible(false);
+        height.setBounds(10,100,300,50);
+
+        heightLabel = new JLabel("Height");
+        heightLabel.setFont(new Font("Arial",Font.BOLD,20));
+        heightLabel.setForeground(Color.black);
+        heightLabel.setVisible(false);
+        heightLabel.setBounds(320,100,100,50);
+
+        base = new JTextField();
+        base.addActionListener(this);
+        base.setFont(new Font("Arial",Font.BOLD,20));
+        base.setForeground(Color.black);
+        base.setEditable(true);
+        base.setVisible(false);
+        base.setBounds(10,160,300,50);
+
+        baseLabel = new JLabel("Base");
+        baseLabel.setFont(new Font("Arial",Font.BOLD,20));
+        baseLabel.setForeground(Color.black);
+        baseLabel.setVisible(false);
+        baseLabel.setBounds(320,160,100,50);
+
+        sideA = new JTextField();
+        sideA.addActionListener(this);
+        sideA.setFont(new Font("Arial",Font.BOLD,20));
+        sideA.setForeground(Color.black);
+        sideA.setEditable(true);
+        sideA.setVisible(false);
+        sideA.setBounds(10,40,300,50);
+
+        sideALabel = new JLabel("Side A");
+        sideALabel.setFont(new Font("Arial",Font.BOLD,20));
+        sideALabel.setForeground(Color.black);
+        sideALabel.setVisible(false);
+        sideALabel.setBounds(320,50,100,50);
+
+        sideB = new JTextField();
+        sideB.addActionListener(this);
+        sideB.setFont(new Font("Arial",Font.BOLD,20));
+        sideB.setForeground(Color.black);
+        sideB.setEditable(true);
+        sideB.setVisible(false);
+        sideB.setBounds(10,100,300,50);
+
+        sideBLabel = new JLabel("Side B");
+        sideBLabel.setFont(new Font("Arial",Font.BOLD,20));
+        sideBLabel.setForeground(Color.black);
+        sideBLabel.setVisible(false);
+        sideBLabel.setBounds(320,100,100,50);
+
 
         perimeter = new JTextField("Perimeter: ");
         perimeter.setFont(new Font("Arial",Font.BOLD,20));
@@ -119,6 +187,14 @@ public class Frame implements ActionListener {
         interfacePanel.add(widthLabel);
         interfacePanel.add(radius);
         interfacePanel.add(radiusLabel);
+        interfacePanel.add(base);
+        interfacePanel.add(baseLabel);
+        interfacePanel.add(height);
+        interfacePanel.add(heightLabel);
+        interfacePanel.add(sideA);
+        interfacePanel.add(sideALabel);
+        interfacePanel.add(sideB);
+        interfacePanel.add(sideBLabel);
         interfacePanel.add(perimeter);
         interfacePanel.add(area);
         interfacePanel.add(calculate);
@@ -140,6 +216,14 @@ public class Frame implements ActionListener {
             widthLabel.setVisible(true);
             radius.setVisible(false);
             radiusLabel.setVisible(false);
+            base.setVisible(false);
+            baseLabel.setVisible(false);
+            height.setVisible(false);
+            heightLabel.setVisible(false);
+            sideA.setVisible(false);
+            sideALabel.setVisible(false);
+            sideB.setVisible(false);
+            sideBLabel.setVisible(false);
 
 
             if(computeBox.getSelectedItem() == "Perimeter"){
@@ -181,11 +265,21 @@ public class Frame implements ActionListener {
 
         if(shapeBox.getSelectedItem() == "Circle"){
             length.setVisible(false);
+            lengthLabel.setVisible(false);
             width.setVisible(false);
+            widthLabel.setVisible(false);
+            base.setVisible(false);
+            baseLabel.setVisible(false);
+            height.setVisible(false);
+            heightLabel.setVisible(false);
+            sideA.setVisible(false);
+            sideALabel.setVisible(false);
+            sideB.setVisible(false);
+            sideBLabel.setVisible(false);
             radius.setVisible(true);
             radiusLabel.setVisible(true);
-            lengthLabel.setVisible(false);
-            widthLabel.setVisible(false);
+
+
 
             if(computeBox.getSelectedItem() == "Perimeter"){
                 area.setVisible(false);
@@ -218,6 +312,63 @@ public class Frame implements ActionListener {
                         Shape circle =  new Circle(Double.parseDouble(radius.getText()));
 
                         area.setText("area: " + circle.calculateArea());
+                    }
+                    catch(NumberFormatException ex){
+                        JOptionPane.showMessageDialog(frame, "Not a valid radius");
+                        radius.setText("");
+                    }
+                }
+            }
+        }
+
+        if(shapeBox.getSelectedItem() == "Triangle"){
+            length.setVisible(false);
+            lengthLabel.setVisible(false);
+            width.setVisible(false);
+            widthLabel.setVisible(false);
+            radius.setVisible(false);
+            radiusLabel.setVisible(false);
+            base.setVisible(true);
+            baseLabel.setVisible(true);
+            calculate.setVisible(true);
+
+            if(computeBox.getSelectedItem() == "Perimeter"){
+                sideA.setVisible(true);
+                sideALabel.setVisible(true);
+                sideB.setVisible(true);
+                sideBLabel.setVisible(true);
+                height.setVisible(false);
+                heightLabel.setVisible(false);
+                perimeter.setVisible(true);
+
+                if(e.getSource() == calculate){
+                    try{
+                        Shape triangle =  new Triangle(Double.parseDouble(sideA.getText()),Double.parseDouble(sideB.getText()),Double.parseDouble(base.getText()));
+
+                        perimeter.setText("Perimeter: " + triangle.calculatePerimeter());
+                    }
+                    catch(NumberFormatException ex){
+                        JOptionPane.showMessageDialog(frame, "Not a valid radius");
+                        radius.setText("");
+                    }
+                }
+            }
+
+            if(computeBox.getSelectedItem() == "Area"){
+                sideA.setVisible(false);
+                sideALabel.setVisible(false);
+                sideB.setVisible(false);
+                sideBLabel.setVisible(false);
+                height.setVisible(true);
+                heightLabel.setVisible(true);
+
+                area.setVisible(true);
+
+                if(e.getSource() == calculate){
+                    try{
+                        Shape triangle =  new Triangle(Double.parseDouble(base.getText()), Double.parseDouble(height.getText()));
+
+                        area.setText("Area: " + triangle.calculateArea());
                     }
                     catch(NumberFormatException ex){
                         JOptionPane.showMessageDialog(frame, "Not a valid radius");
