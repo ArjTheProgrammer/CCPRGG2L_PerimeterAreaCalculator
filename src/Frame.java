@@ -224,7 +224,8 @@ public class Frame implements ActionListener {
             sideALabel.setVisible(false);
             sideB.setVisible(false);
             sideBLabel.setVisible(false);
-
+            area.setText("area: ");
+            perimeter.setText("perimeter: ");
 
             if(computeBox.getSelectedItem() == "Perimeter"){
                 area.setVisible(false);
@@ -278,7 +279,8 @@ public class Frame implements ActionListener {
             sideBLabel.setVisible(false);
             radius.setVisible(true);
             radiusLabel.setVisible(true);
-
+            area.setText("area: ");
+            perimeter.setText("perimeter: ");
 
 
             if(computeBox.getSelectedItem() == "Perimeter"){
@@ -331,6 +333,8 @@ public class Frame implements ActionListener {
             base.setVisible(true);
             baseLabel.setVisible(true);
             calculate.setVisible(true);
+            area.setText("area: ");
+            perimeter.setText("perimeter: ");
 
             if(computeBox.getSelectedItem() == "Perimeter"){
                 sideA.setVisible(true);
