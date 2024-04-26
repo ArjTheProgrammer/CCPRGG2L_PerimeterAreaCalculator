@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class Frame implements ActionListener {
     JFrame frame;
     JLabel title;
-    JComboBox<String> computeBox;
+ //   JComboBox<String> computeBox;
     JComboBox<String> shapeBox;
     JTextField length;
     JLabel lengthLabel;
@@ -18,6 +18,8 @@ public class Frame implements ActionListener {
     JLabel heightLabel;
     JTextField base;
     JLabel baseLabel;
+    JTextField base2;
+    JLabel base2Label;
     JTextField sideA;
     JLabel sideALabel;
     JLabel sideBLabel;
@@ -54,7 +56,7 @@ public class Frame implements ActionListener {
 //        computeBox.setBackground(new Color(0xf8f0fc));
 //        computeBox.setFont(new Font("Rubik", Font.BOLD, 18));
 
-        String[] shapes = {"Circle", "Rectangle", "Triangle"};
+        String[] shapes = {"Circle", "Rectangle", "Triangle", "Trapezoid"};
         shapeBox = new JComboBox<>(shapes);
         shapeBox.addActionListener(this);
         shapeBox.setEditable(false);
@@ -118,13 +120,13 @@ public class Frame implements ActionListener {
         height.setForeground(Color.black);
         height.setEditable(true);
         height.setVisible(false);
-        height.setBounds(10,100,300,50);
+        height.setBounds(10,160,300,50);
 
         heightLabel = new JLabel("Height");
         heightLabel.setFont(new Font("Arial",Font.BOLD,20));
         heightLabel.setForeground(Color.black);
         heightLabel.setVisible(false);
-        heightLabel.setBounds(320,100,100,50);
+        heightLabel.setBounds(320,160,100,50);
 
         base = new JTextField();
         base.addActionListener(this);
@@ -132,13 +134,27 @@ public class Frame implements ActionListener {
         base.setForeground(Color.black);
         base.setEditable(true);
         base.setVisible(false);
-        base.setBounds(10,160,300,50);
+        base.setBounds(10,100,300,50);
 
         baseLabel = new JLabel("Base");
         baseLabel.setFont(new Font("Arial",Font.BOLD,20));
         baseLabel.setForeground(Color.black);
         baseLabel.setVisible(false);
-        baseLabel.setBounds(320,160,100,50);
+        baseLabel.setBounds(320,100,100,50);
+
+        base2 = new JTextField();
+        base2.addActionListener(this);
+        base2.setFont(new Font("Arial",Font.BOLD,20));
+        base2.setForeground(Color.black);
+        base2.setEditable(true);
+        base2.setVisible(false);
+        base2.setBounds(10,40,300,50);
+
+        base2Label = new JLabel("2nd Base");
+        base2Label.setFont(new Font("Arial",Font.BOLD,20));
+        base2Label.setForeground(Color.black);
+        base2Label.setVisible(false);
+        base2Label.setBounds(320,40,100,50);
 
         sideA = new JTextField();
         sideA.addActionListener(this);
@@ -184,7 +200,7 @@ public class Frame implements ActionListener {
         area.setBounds(10,220,300,50);
 
 
-        JTextField[] textFields = {length, width, radius, height, base, sideA, sideB};
+        JTextField[] textFields = {length, width, radius, height, base, base2, sideA, sideB};
 
         for (JTextField textField : textFields) {
             textField.setBorder(BorderFactory.createLineBorder(new Color(0xcc5de8), 1));
@@ -194,7 +210,7 @@ public class Frame implements ActionListener {
 
         }
 
-        JLabel[] labels = {lengthLabel, widthLabel, radiusLabel, heightLabel, baseLabel, sideALabel, sideBLabel};
+        JLabel[] labels = {lengthLabel, widthLabel, radiusLabel, heightLabel, baseLabel, base2Label, sideALabel, sideBLabel};
 
         for (JLabel label : labels) {
             label.setFont(new Font("Rubik", Font.BOLD, 20));
@@ -227,6 +243,8 @@ public class Frame implements ActionListener {
         interfacePanel.add(radiusLabel);
         interfacePanel.add(base);
         interfacePanel.add(baseLabel);
+        interfacePanel.add(base2);
+        interfacePanel.add(base2Label);
         interfacePanel.add(height);
         interfacePanel.add(heightLabel);
         interfacePanel.add(sideA);
@@ -273,7 +291,8 @@ public class Frame implements ActionListener {
             sideBLabel.setVisible(false);
             area.setText("area: ");
             perimeter.setText("perimeter: ");
-
+            base2.setVisible(false);
+            base2Label.setVisible(false);
 
 
                 perimeter.setVisible(false);
@@ -310,7 +329,8 @@ public class Frame implements ActionListener {
             radiusLabel.setVisible(true);
             area.setText("area: ");
             perimeter.setText("perimeter: ");
-
+            base2.setVisible(false);
+            base2Label.setVisible(false);
 
 
 
@@ -344,7 +364,8 @@ public class Frame implements ActionListener {
             calculate.setVisible(true);
             area.setText("area: ");
             perimeter.setText("perimeter: ");
-
+            base2.setVisible(false);
+            base2Label.setVisible(false);
 
 
                 sideA.setVisible(false);
@@ -365,8 +386,51 @@ public class Frame implements ActionListener {
                     }
                     catch(NumberFormatException ex){
                         JOptionPane.showMessageDialog(frame, "Not a valid base or height");
-                        radius.setText("");
+                        base.setText("");
+                        height.setText("");
                     }
+            }
+        }
+
+        if(shapeBox.getSelectedItem() == "Trapezoid"){
+            length.setVisible(false);
+            lengthLabel.setVisible(false);
+            width.setVisible(false);
+            widthLabel.setVisible(false);
+            radius.setVisible(false);
+            radiusLabel.setVisible(false);
+            base.setVisible(true);
+            baseLabel.setVisible(true);
+            base2.setVisible(true);
+            base2Label.setVisible(true);
+            calculate.setVisible(true);
+            area.setText("area: ");
+            perimeter.setText("perimeter: ");
+
+
+
+            sideA.setVisible(false);
+            sideALabel.setVisible(false);
+            sideB.setVisible(false);
+            sideBLabel.setVisible(false);
+            height.setVisible(true);
+            heightLabel.setVisible(true);
+
+            area.setVisible(true);
+
+            if(e.getSource() == calculate){
+                try{
+                    Shape trapezoid =  new Trapezoid(Double.parseDouble(base.getText()), Double.parseDouble(base2.getText()),Double.parseDouble(height.getText()));
+
+
+                    area.setText("Area: " + trapezoid.calculateArea());
+                }
+                catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(frame, "Not a valid bases or height");
+                    base.setText("");
+                    base2.setText("");
+                    height.setText("");
+                }
             }
         }
     }
